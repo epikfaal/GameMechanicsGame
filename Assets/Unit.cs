@@ -20,7 +20,7 @@ public class Unit : MonoBehaviour {
         GetComponent<SpriteRenderer>().color = tempcolor;
         if (!hasMoved)
         {
-            transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, 0);
+            transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, -1);
             temp = true;
         }
         hasMoved = true;

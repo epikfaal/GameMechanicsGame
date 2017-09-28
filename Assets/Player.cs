@@ -50,7 +50,7 @@ public class Player : MonoBehaviour {
         Unit unit = go.AddComponent<Unit>() as Unit;
         unit.AssignToPlayer(this);
         units.Add(unit);
-        go.transform.position = tile.transform.position;
+        go.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, -1f);
         SpriteRenderer sr2 = go.AddComponent<SpriteRenderer>() as SpriteRenderer;
         GameObject array = GameObject.FindGameObjectWithTag("SpriteDump");
         sr2.sprite = array.GetComponent<SpriteRenderer>().sprite;
