@@ -6,11 +6,10 @@ public class Unit : MonoBehaviour {
 
     public Player player;
     public int moveStat;
-    public bool hasMoved;
+    public bool hasMoved = false;
     
 	void Start () {
         moveStat = 3;
-        hasMoved = false;
 	}
     public bool moveTo(Tile tile)
     {
