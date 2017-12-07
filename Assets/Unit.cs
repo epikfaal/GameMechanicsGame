@@ -18,7 +18,9 @@ public class Unit : MonoBehaviour {
     {
         bool temp = false;
         Color tempcolor = player.color;
-        tempcolor.a = 0.4f;
+        tempcolor.r += (1f - tempcolor.r) * .5f;
+        tempcolor.g += (1f - tempcolor.g) * .5f;
+        tempcolor.b += (1f - tempcolor.b) * .5f;
         GetComponent<SpriteRenderer>().color = tempcolor;
         if (!hasMoved)
         {

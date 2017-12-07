@@ -15,7 +15,9 @@ public class City : MonoBehaviour, BuildingInterface {
         if (this.player) this.player.removeCity(this);
         this.player = player;
         player.addCity(this);
-        GetComponent<SpriteRenderer>().color = player.color;
+        Color tempcolor = player.color;
+        tempcolor.a = 0.7f;
+        GetComponent<SpriteRenderer>().color = tempcolor;
     }
     public static City Create(int x, int y, Tile[][] world)
     {

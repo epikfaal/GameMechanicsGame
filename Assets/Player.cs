@@ -50,8 +50,10 @@ public class Player : MonoBehaviour {
         unit.AssignToPlayer(this);
         units.Add(unit);
         go.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, -1f);
+
         SpriteRenderer sr2 = go.AddComponent<SpriteRenderer>() as SpriteRenderer;
         GameObject array = GameObject.FindGameObjectWithTag(spriteName);
+
         sr2.sprite = array.GetComponent<SpriteRenderer>().sprite;
         sr2.color = new Color(color.r, color.g, color.b, 0.4f);
 
@@ -71,6 +73,10 @@ public class Player : MonoBehaviour {
     {
         funds += citys.Count * 1000;
         UI.updateFunds(funds);
+        GameObject camera = GameObject.FindGameObjectWithTag("MainCamera");
+        MoveCamera mcamera = camera.GetComponent<MoveCamera>() as MoveCamera;
+        mcamera.moveTo(startX, startY);
+
         //income handling
         units.ForEach(delegate (Unit unit)
         {

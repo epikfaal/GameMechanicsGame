@@ -47,7 +47,9 @@ public class Factory : MonoBehaviour, BuildingInterface  {
     public void assignToPlayer(Player player)
     {
         this.player = player;
-        GetComponent<SpriteRenderer>().color = player.color;
+        Color tempcolor = player.color;
+        tempcolor.a = 0.8f;
+        GetComponent<SpriteRenderer>().color = tempcolor;
     }
 
     private void setTile(Tile tile)
