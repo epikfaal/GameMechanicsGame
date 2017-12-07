@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class City : MonoBehaviour {
+public class City : MonoBehaviour, BuildingInterface {
     private static int count = 0;
     Player player;
     Tile tile;
@@ -14,7 +14,6 @@ public class City : MonoBehaviour {
     {
         if (this.player) this.player.removeCity(this);
         this.player = player;
-        Debug.Log(player);
         player.addCity(this);
         GetComponent<SpriteRenderer>().color = player.color;
     }
@@ -28,7 +27,7 @@ public class City : MonoBehaviour {
         GameObject spritego = GameObject.FindGameObjectWithTag("CitySpriteDump");
 
         sr.sprite = spritego.GetComponent<SpriteRenderer>().sprite;
-        sr.color = new Color(.5f, .5f, .5f, 1);
+        sr.color = new Color(1f, 1f, 1f, 1);
 
         City city = go.AddComponent<City>() as City;
         city.setTile(world[x][y]);

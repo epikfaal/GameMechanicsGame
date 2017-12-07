@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class Factory : MonoBehaviour {
+public class Factory : MonoBehaviour, BuildingInterface  {
 
     private static int count;
     Player player;
@@ -15,15 +15,13 @@ public class Factory : MonoBehaviour {
     void OnMouseDown()
     {
         bool occupied = tile.isUnitOnTile();
-        tile.OnMouseDown();
-        if (tile.isUnitOnTile() && !occupied)
-        {
-            this.assignToPlayer(TurnManager.currentPlayer);
-        }
+
+        MovementController.moveUnit(tile, this);
+        
         if(!tile.isUnitOnTile() && TurnManager.currentPlayer == player && TurnManager.currentPlayer.funds >= 5000)
         {
             TurnManager.currentPlayer.funds -= 5000;
-            TurnManager.currentPlayer.createUnit(tile);
+            TurnManager.currentPlayer.createUnit(tile, "SpecialUnitSprite");
             TurnManager.currentPlayer.UI.updateFunds(TurnManager.currentPlayer.funds);
         }
     }
@@ -37,7 +35,7 @@ public class Factory : MonoBehaviour {
         GameObject spritego = GameObject.FindGameObjectWithTag("FactorySpriteDump");
 
         sr.sprite = spritego.GetComponent<SpriteRenderer>().sprite;
-        sr.color = new Color(.5f, .5f, .5f, 1);
+        sr.color = new Color(1f, 1f, 1f, 1);
 
         Factory factory = go.AddComponent<Factory>() as Factory;
         factory.setTile(world[x][y]);

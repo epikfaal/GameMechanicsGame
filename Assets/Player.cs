@@ -44,7 +44,7 @@ public class Player : MonoBehaviour {
         }
     }
 
-    public void createUnit(Tile tile)
+    public void createUnit(Tile tile, string spriteName = "SpriteDump")
     {
         GameObject go = new GameObject("unit" + units.Count);
         Unit unit = go.AddComponent<Unit>() as Unit;
@@ -52,9 +52,16 @@ public class Player : MonoBehaviour {
         units.Add(unit);
         go.transform.position = new Vector3(tile.transform.position.x, tile.transform.position.y, -1f);
         SpriteRenderer sr2 = go.AddComponent<SpriteRenderer>() as SpriteRenderer;
-        GameObject array = GameObject.FindGameObjectWithTag("SpriteDump");
+        GameObject array = GameObject.FindGameObjectWithTag(spriteName);
         sr2.sprite = array.GetComponent<SpriteRenderer>().sprite;
         sr2.color = new Color(color.r, color.g, color.b, 0.4f);
+
+        SpecialUnit su = array.GetComponent<SpecialUnit>() as SpecialUnit;
+        go.transform.localScale = new Vector3(su.Scale, su.Scale, 1);
+        unit.moveStat = su.moveStat;
+        unit.canCapture = su.canCapture;
+        unit.attackRange = su.attackRange;
+
         unit.hasMoved = true;
         
         BoxCollider2D bc2D = go.AddComponent<BoxCollider2D>() as BoxCollider2D;

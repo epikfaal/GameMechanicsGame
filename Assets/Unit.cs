@@ -5,11 +5,14 @@ using UnityEngine;
 public class Unit : MonoBehaviour {
 
     public Player player;
-    public int moveStat;
+    public int moveStat = 3;
+    public int attackRange = 1;
+    public bool canCapture = true;
     public bool hasMoved = false;
+    public const string SPRITE_NAME = "SpriteDump";
     
 	void Start () {
-        moveStat = 3;
+        
 	}
     public bool moveTo(Tile tile)
     {

@@ -48,7 +48,7 @@ public class MovementController : MonoBehaviour {
 
     }
 
-    public static void moveUnit(Tile tile, City city = null)
+    public static void moveUnit(Tile tile, BuildingInterface building = null)
     {
 
         
@@ -61,8 +61,9 @@ public class MovementController : MonoBehaviour {
             if (reachableTiles.Contains(tile))
             {
                 bool actuallymoved = selectedUnit.moveTo(tile);
+                bool canCapture = selectedUnit.canCapture;
                 deselectUnit();
-                if (city != null && actuallymoved) city.assignToPlayer(TurnManager.currentPlayer);
+                if (building != null && actuallymoved && canCapture) building.assignToPlayer(TurnManager.currentPlayer);
             }
         }
 
