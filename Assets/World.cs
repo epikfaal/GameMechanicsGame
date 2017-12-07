@@ -85,8 +85,13 @@ public class World : MonoBehaviour {
         createSymetricFactorys(9, 4);
         createSymetricFactorys(13, 1);
 
-        TurnManager.player1.tile = world[(int)TurnManager.player1.startX][(int)TurnManager.player1.startY];
-        TurnManager.player2.tile = world[(int)TurnManager.player2.startX][(int)TurnManager.player2.startY];
+        Unit temp = TurnManager.player1.createUnit(TurnManager.player1.tile = world[(int)TurnManager.player1.startX][(int)TurnManager.player1.startY]);
+        TurnManager.player2.createUnit(TurnManager.player2.tile = world[(int)TurnManager.player2.startX][(int)TurnManager.player2.startY]);
+
+        // make sure the first player can move his first unit
+        Color p1color = temp.GetComponent<SpriteRenderer>().color;
+        temp.GetComponent<SpriteRenderer>().color = new Color(p1color.r, p1color.g, p1color.b, 1f);
+        temp.hasMoved = false;
     }
     private void createSymetricCities(int x, int y, bool neutral = true)
     {
