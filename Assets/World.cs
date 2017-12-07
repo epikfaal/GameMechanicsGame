@@ -14,7 +14,7 @@ public class World : MonoBehaviour {
     void Start () {
        
         tileSp = Sprite.Create(Texture2D.whiteTexture, new Rect(0f, 0f, 2f, 2f), new Vector2(0.5f, 0.5f), 100f);
-        createWorld(20, 20);
+        createWorld(15, 15);
         //sr = gameObject.AddComponent<SpriteRenderer>() as SpriteRenderer;
         //sr.color = new Color(.9f, .9f, .9f, 1f);
 
@@ -73,21 +73,17 @@ public class World : MonoBehaviour {
         createSymetricCities(4, 7);
         createSymetricCities(1, 8);
         createSymetricCities(0, 4);
-        createSymetricCities(17, 1);
         createSymetricCities(12, 3);
         createSymetricCities(14, 7);
         createSymetricCities(11, 8);
         createSymetricCities(10, 4);
         createSymetricCities(2, 13);
-        createSymetricCities(4, 17);
-        createSymetricCities(1, 18);
         createSymetricCities(0, 14);
         createSymetricCities(7, 11);
 
         createSymetricFactorys(3, 3, false);
         createSymetricFactorys(9, 4);
         createSymetricFactorys(13, 1);
-        createSymetricFactorys(12, 16);
 
         TurnManager.player1.tile = world[(int)TurnManager.player1.startX][(int)TurnManager.player1.startY];
         TurnManager.player2.tile = world[(int)TurnManager.player2.startX][(int)TurnManager.player2.startY];
