@@ -7,6 +7,7 @@ TagManager:
   - SpriteDump
   - CitySpriteDump
   - FactorySpriteDump
+  - SpecialUnitSprite
   layers:
   - Default
   - TransparentFX
